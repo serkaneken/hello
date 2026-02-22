@@ -1,22 +1,103 @@
-<html>
+<!doctype html>
+<html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="index.css" rel="stylesheet">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#ffffff" />
+    <link rel="stylesheet" href="index.css" />
     {% seo %}
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Serkan Eken",
+        "jobTitle": "Frontend & Mobile Developer",
+        "url": "{{ site.url }}",
+        "image": "{{ site.url }}/me.jpg",
+        "sameAs": [
+          "https://github.com/serkaneken",
+          "https://www.linkedin.com/in/serkaneken/",
+          "https://stackoverflow.com/users/8304918/serkan-eken"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Istanbul",
+          "addressCountry": "TR"
+        }
+      }
+    </script>
   </head>
   <body>
     <div class="container-lg py-6">
       <div class="clearfix gutter-md-spacious">
         <div class="float-left col-md-4">
-          <img class="width-full" src="me.jpg" alt="Serkan Eken">
+          <img class="width-full" src="me.jpg" alt="Serkan Eken" />
         </div>
         <div class="float-left col-md-8">
-          <div class="markdown-body">
-            {{ content }}
+          <div class="lang-switcher">
+            <button data-lang="en" id="btn-en">EN</button>
+            <button data-lang="tr" id="btn-tr">TR</button>
           </div>
+          <div class="markdown-body" id="content-area"></div>
         </div>
       </div>
     </div>
+
+    <script>
+      const LINKS = `<p>
+  -- <a href="https://github.com/serkaneken">@github</a><br>
+  -- <a href="https://www.linkedin.com/in/serkaneken/">@linkedin</a><br>
+  -- <a href="https://stackoverflow.com/users/8304918/serkan-eken">stackOverflow</a>
+</p>`;
+
+      const cvLink = (label) =>
+        `<a href="Serkan_Eken_CV.pdf" class="cv-link" download>↓ ${label}</a>`;
+
+      const translations = {
+        en: {
+          lang: "en",
+          html: `<h1>👋 Hello,</h1>
+<p>Software Designer and Developer</p>
+<p>Hey, I'm Serkan — a Frontend &amp; Mobile Developer based in Istanbul.</p>
+<p>I build interfaces that work — fast, clean, and scalable across both web and mobile. Enterprise platforms, fintech products, public-facing apps — I've shipped across the stack and care deeply about the details that make a product hold up over time.</p>
+<p>Agile by nature, disciplined by choice. I follow the industry closely and bring what actually matters into practice — not just what's trending.</p>
+<p>Startups and innovation are where I feel most at home. I like environments where engineering decisions have real weight.</p>
+<p>Away from the screen: motorcycles, cycling, fitness, and a cat. Soundtrack: techno &amp; deep house.</p>
+${LINKS}
+${cvLink("Download CV")}`,
+        },
+        tr: {
+          lang: "tr",
+          html: `<h1>👋 Merhaba,</h1>
+<p>Yazılım Tasarımcısı ve Geliştirici</p>
+<p>Merhaba, ben Serkan — İstanbul merkezli bir Frontend &amp; Mobil Geliştirici.</p>
+<p>Hem web hem mobilde hızlı, temiz ve ölçeklenebilir arayüzler geliştiriyorum. Kurumsal platformlar, fintech ürünleri, kullanıcıya yönelik uygulamalar — stack'in her katmanında ürün çıkardım ve bir ürünü zamanla ayakta tutan detaylara önem veriyorum.</p>
+<p>Doğası gereği çevik, tercihen disiplinli. Sektörü yakından takip eder, gerçekten işe yarayanı pratiğe dökerim — sadece trend olanı değil.</p>
+<p>Startup'lar ve inovasyon benim en rahat hissettiğim alan. Mühendislik kararlarının gerçek ağırlık taşıdığı ortamları severim.</p>
+<p>Ekranın dışında: motosiklet, bisiklet, fitness ve bir kedi. Müzik: techno &amp; deep house.</p>
+${LINKS}
+${cvLink("CV İndir")}`,
+        },
+      };
+
+      function setLang(lang) {
+        const t = translations[lang];
+        document.getElementById("content-area").innerHTML = t.html;
+        document.documentElement.lang = t.lang;
+        document.querySelectorAll(".lang-switcher button").forEach((btn) => {
+          btn.classList.toggle("active", btn.dataset.lang === lang);
+        });
+        localStorage.setItem("lang", lang);
+      }
+
+      document
+        .querySelector(".lang-switcher")
+        .addEventListener("click", (e) => {
+          const lang = e.target.dataset.lang;
+          if (lang) setLang(lang);
+        });
+
+      setLang(localStorage.getItem("lang") || "en");
+    </script>
   </body>
 </html>

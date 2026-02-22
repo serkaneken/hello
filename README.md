@@ -1,18 +1,21 @@
-# Hello, GitHub
-
+# serkaneken.github.io
 
 ## Setup
 
-```
-brew install ruby (if doesn't exist)
+```bash
+brew install rbenv ruby-build
+echo 'eval "$(rbenv init - zsh)"' >> ~/.zshrc
+source ~/.zshrc
+rbenv install 3.3.0
+rbenv global 3.3.0
 gem install bundler
 bundle install
 ```
 
 ## Local dev
 
-```
+```bash
 bundle exec jekyll serve
 ```
 
-Then, open browser to <http://localhost:4000>.
+Open <http://localhost:4000>.
