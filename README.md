@@ -1,4 +1,4 @@
-# serkaneken.github.io
+# https://serkaneken.github.io/hello/
 
 ## Setup
 
