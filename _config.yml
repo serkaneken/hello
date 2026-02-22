@@ -1,12 +1,12 @@
-markdown:       kramdown
+markdown: kramdown
 kramdown:
-auto_ids:     true
-encoding:       UTF-8
+  auto_ids: true
+encoding: UTF-8
 exclude:
   - .git/
-  - package.json
-  - package-lock.json
-  - node_modules
+  - Gemfile
+  - Gemfile.lock
+  - README.md
 sass:
   sass_dir: ./
   style: compressed
@@ -15,13 +15,25 @@ theme: jekyll-theme-primer
 
 plugins:
   - jekyll-seo-tag
+  - jekyll-sitemap
 
-title: "👋 Hello, GitHub"
-description: "@serkaneken"
+url: "https://serkaneken.github.io"
+baseurl: ""
 
-twitter:
-  username: serkaneken
+title: "Serkan Eken"
+description: "Frontend & Mobile Developer based in Istanbul"
+image: /me.jpg
 
 author:
   name: Serkan Eken
   twitter: serkaneken
+
+twitter:
+  username: serkaneken
+
+social:
+  name: Serkan Eken
+  links:
+    - https://github.com/serkaneken
+    - https://www.linkedin.com/in/serkaneken/
+    - https://stackoverflow.com/users/8304918/serkan-eken
