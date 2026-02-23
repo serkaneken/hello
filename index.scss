@@ -10,6 +10,18 @@
   .markdown-body {
     padding: 1em;
   }
+
+  .col-md-4 {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.5em;
+
+    img {
+      width: 200px !important;
+      height: 200px !important;
+      object-fit: cover;
+    }
+  }
 }
 
 .cv-link {
